@@ -1,5 +1,6 @@
 package org.seckill.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.SuccessKilled;
 
 /**
@@ -8,16 +9,17 @@ import org.seckill.entity.SuccessKilled;
 public interface SuccessKilledDao {
     /**
      * 插入购买明细,可过滤重复
-     * @param seckilled
+     * @param seckillId
      * @param userPhone
      * @return
      */
-    int insertSuccessKilled(long seckilled, long userPhone);
+    int insertSuccessKilled(@Param("seckillId")long seckillId, @Param("userPhone")long userPhone);
 
     /**
      * 根据 id 查询SuccessKilled 并携带秒杀产品对象实体
      * @param seckillId
+     * @param userPhone
      * @return
      */
-    SuccessKilled queryByIdWithSeckill(long seckillId);
+    SuccessKilled queryByIdWithSeckill(@Param("seckillId")long seckillId, @Param("userPhone")long userPhone);
 }
